@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Script for installing tmux on systems where you don't have root access.
-# tmux will be installed in $HOME/setup/tmux/bin.
+# tmux will be installed in $HOME/.setup/tmux/bin.
 # It's assumed that wget and a C/C++ compiler are installed.
 
 # exit on error
@@ -14,8 +14,6 @@ NCURSES_VERSION=6.2
 INSTALL_DIR="$HOME/.setup/tmux"
 TMP_DIR="$HOME/.setup/tmux_tmp"
 # create our directories
-#mkdir -p $HOME/local $HOME/tmux_tmp
-#cd $HOME/tmux_tmp
 mkdir -p ${INSTALL_DIR} ${TMP_DIR}
 cd ${TMP_DIR}
 

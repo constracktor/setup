@@ -86,5 +86,3 @@ if "test ! -d ${INSTALL_DIR}/plugins/tpm" {
 run '${INSTALL_DIR}/plugins/tpm/tpm'
 EOT
 
-echo 'alias tmux=".setup/tmux/bin/tmux -f .setup/tmux/.tmux.conf"' >> ~/.bashrc
-
