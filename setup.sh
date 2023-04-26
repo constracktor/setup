@@ -12,4 +12,4 @@ ${SCRIPT_DIR}/tmux/install_tmux.sh
 echo "TMUX installation successful"
 ${SCRIPT_DIR}/tmux/configure_tmux.sh
 echo "TMUX configuration successful"
-echo 'alias tmux=".setup/tmux/bin/tmux -f .setup/tmux/.tmux.conf"' >> $HOME/.bashrc.my
+echo 'alias tmux="$HOME/.setup/tmux/bin/tmux -f $HOME/.setup/tmux/.tmux.conf"' >> $HOME/.bashrc.my

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Script for configuring tmux on systems where you don't have root access.
-# tmux configuration file will be stored in $HOME/setup/tmux/.
+# tmux configuration file will be stored in $HOME/.setup/tmux/.
 
 INSTALL_DIR="$HOME/.setup/tmux"
 
