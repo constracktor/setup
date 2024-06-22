@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 #
 # Script for installing Neovim on systems where you don't have root access.
 # Configuration can be changed in "~/.setup/neovim/.config/init.lua"
