@@ -35,5 +35,4 @@ case $NVIM_VERSION in
 esac
 # extract tar file
 tar xvzf files/$FILE_NAME -C $INSTALL_DIR --strip-components 1
-# add alias to .bashrc
-echo 'alias nvim="$HOME/.setup/neovim/bin/nvim -u $HOME/.setup/neovim/.config/init.lua"' >> $HOME/.bashrc
+echo "Neovim installation successful."
