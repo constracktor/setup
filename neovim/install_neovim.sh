@@ -5,7 +5,7 @@
 set -e
 NVIM_VERSION=$1
 INSTALL_DIR="$HOME/.setup/neovim"
-# create our directories
+# create install directory
 mkdir -p ${INSTALL_DIR}
 # copy config
 cp -r config ${INSTALL_DIR}/.config
