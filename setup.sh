@@ -21,10 +21,10 @@ SCRIPT_DIR="$HOME/setup"
 # TMUX
 if [[ "$INSTALL_TMUX" == "ON" ]]; then
 	cd ${SCRIPT_DIR}/tmux && ./install_tmux.sh $TMUX_VERSION
-	echo 'alias tmux="${SCRIPT_DIR}/tmux/bin/tmux -f ${SCRIPT_DIR}/tmux/.config/.tmux.conf"' >> $HOME/.bashrc.my
+	echo 'alias tmux="$HOME/.setup/tmux/bin/tmux -f $HOME/.setup/tmux/.config/.tmux.conf"' >> $HOME/.bashrc.my
 fi
 # Neovim
 if [[ "$INSTALL_NEOVIM" == "ON" ]]; then
 	cd ${SCRIPT_DIR}/neovim && ./install_neovim.sh $NEOVIM_VERSION
-	echo 'alias nvim="${SCRIPT_DIR}/neovim/bin/nvim -u ${SCRIPT_DIR}/neovim/.config/init.lua"' >> $HOME/.bashrc.my
+	echo 'alias nvim="$HOME/.setup/neovim/bin/nvim -u $HOME/.setup/neovim/.config/init.lua"' >> $HOME/.bashrc.my
 fi
