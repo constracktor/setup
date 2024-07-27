@@ -22,7 +22,14 @@ case $(uname) in
         exit 1
         ;;
 esac
-FILE_NAME=nvim-$OS_NAME.tar.gz
+
+if [[ "$2" == "arm" ]]
+then
+    FILE_NAME=nvim-$OS_NAME-arm64.tar.gz
+else
+then
+    FILE_NAME=nvim-$OS_NAME.tar.gz
+fi
 # download tar-file if necessary
 case $NVIM_VERSION in
     0.9.5)
