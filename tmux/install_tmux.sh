@@ -11,10 +11,6 @@ NCURSES_VERSION=6.5
 # wget -O files/libevent-${LIBEVENT_VERSION}-stable.tar.gz https://github.com/libevent/libevent/releases/download/release-${LIBEVENT_VERSION}-stable/libevent-${LIBEVENT_VERSION}-stable.tar.gz 
 # wget -O files/ncurses-${NCURSES_VERSION}.tar.gz ftp://ftp.gnu.org/gnu/ncurses/ncurses-${NCURSES_VERSION}.tar.gz
 INSTALL_DIR="$HOME/.setup/tmux"
-TMP_DIR="$HOME/.setup/tmux_tmp"
-# create our directories
-mkdir -p ${INSTALL_DIR} ${TMP_DIR}
-cd ${TMP_DIR}
 # download tar-file if necessary
 case $TMUX_VERSION in
     3.3a)
@@ -45,8 +41,8 @@ cd tmux-${TMUX_VERSION}
 ./configure CFLAGS="-I${INSTALL_DIR}/include -I${INSTALL_DIR}/include/ncurses" LDFLAGS="-L${INSTALL_DIR}/lib -L${INSTALL_DIR}/include/ncurses -L${INSTALL_DIR}/include"
 CPPFLAGS="-I${TMP_DIR}/include -I${TMP_DIR}/include/ncurses" LDFLAGS="-static -L${TMP_DIR}/include -L${TMP_DIR}/include/ncurses -L${TMP_DIR}/lib" make
 cp tmux ${INSTALL_DIR}/bin
-# cleanup
-rm -rf ../${TMP_DIR}
+cd ..
 # copy config
-cp config/tmux.conf ${INSTALL_DIR}/.config/.tmux.conf
+mkdir ${INSTALL_DIR}/.config
+cp ../config/tmux.conf ${INSTALL_DIR}/.config/
 echo "TMUX installation succesfull."
