@@ -38,7 +38,7 @@ cd ..
 # extract, configure, and compile tmux
 tar xvzf tmux-${TMUX_VERSION}.tar.gz
 cd tmux-${TMUX_VERSION}
-./configure CFLAGS="-I${INSTALL_DIR}/include -I${INSTALL_DIR}/include/ncurses" LDFLAGS="-L${INSTALL_DIR}/lib -L${INSTALL_DIR}/include/ncurses -L${INSTALL_DIR}/include"
+./configure --disable-utf8proc CFLAGS="-I${INSTALL_DIR}/include -I${INSTALL_DIR}/include/ncurses" LDFLAGS="-L${INSTALL_DIR}/lib -L${INSTALL_DIR}/include/ncurses -L${INSTALL_DIR}/include"
 CPPFLAGS="-I${TMP_DIR}/include -I${TMP_DIR}/include/ncurses" LDFLAGS="-static -L${TMP_DIR}/include -L${TMP_DIR}/include/ncurses -L${TMP_DIR}/lib" make
 cp tmux ${INSTALL_DIR}/bin
 cd ..
