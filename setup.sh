@@ -1,30 +1,31 @@
 #!/bin/bash
-if [[ "$1" == "all" ]]; then
-    INSTALL_TMUX=ON
-    INSTALL_NEOVIM=ON
-elif [[ "$1" == "tmux" ]]; then
-    INSTALL_TMUX=ON
-elif [[ "$1" == "neovim" ]]; then
-    INSTALL_NEOVIM=ON
-else
-    echo 'Specify: tmux, neovim, or all' >&2
-    print_usage_abort
-fi
 # Versions
-TMUX_VERSION=3.3a
-NEOVIM_VERSION=0.9.5
+TMUX_VERSION=3.4
+NEOVIM_VERSION=0.10.0
 # Create own .bashrc.my and add to .bashrc
 touch "$HOME/.bashrc.my"
-echo '[ -r ~/.bashrc.my ] && . ~/.bashrc.my' >> $HOME/.bashrc
+# Text to add to .bashrc
+TEXT_TO_ADD='[ -r ~/.bashrc.my ] && . ~/.bashrc.my'
+# Check if the line is already in .bashrc
+if ! grep -Fxq "$TEXT_TO_ADD" "$HOME/.bashrc"; then
+    echo "$TEXT_TO_ADD" >> "$HOME/.bashrc"
+    echo "Added to .bashrc: $TEXT_TO_ADD"
+else
+    echo "Already exists in .bashrc: $TEXT_TO_ADD"
+fi
 # Path to setup repository
 SCRIPT_DIR="$HOME/setup"
+
+# Install spack in $HOME (if required)
+cd ${SCRIPT_DIR}/spack
+source install_spack.sh
+
 # TMUX
-if [[ "$INSTALL_TMUX" == "ON" ]]; then
-	cd ${SCRIPT_DIR}/tmux && ./install_tmux.sh $TMUX_VERSION
-	echo 'alias tmux="$HOME/.setup/tmux/bin/tmux -f $HOME/.setup/tmux/.config/tmux.conf"' >> $HOME/.bashrc.my
-fi
+cd ${SCRIPT_DIR}/tmux
+source install_tmux.sh $TMUX_VERSION
+source configure_tmux.sh $SCRIPT_DIR
 # Neovim
-if [[ "$INSTALL_NEOVIM" == "ON" ]]; then
-	cd ${SCRIPT_DIR}/neovim && ./install_neovim.sh $NEOVIM_VERSION
-	echo 'alias nvim="$HOME/.setup/neovim/bin/nvim -u $HOME/.setup/neovim/.config/init.lua"' >> $HOME/.bashrc.my
-fi
+cd ${SCRIPT_DIR}/neovim
+source install_neovim.sh $NEOVIM_VERSION
+source configure_neovim.sh $SCRIPT_DIR
+cd $HOME

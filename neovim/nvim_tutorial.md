@@ -90,3 +90,4 @@ hls 	'hlsearch'	highlight all matching phrases
 ## tbd.
 enter			open link
 K			documentation
+:Lazy			Package manager

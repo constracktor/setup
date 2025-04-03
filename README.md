@@ -1,5 +1,4 @@
 # setup
 
 1. clone repo into $HOME
-2. run `setup/setup.sh`
-3. run `source .bashrc`
+2. run `source setup/setup.sh`
